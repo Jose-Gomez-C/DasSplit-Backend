@@ -23,8 +23,12 @@ public class User implements Serializable {
     private String email;
     @Getter
     @Setter
-    private List<Account> accounts;
+    private List<String> accounts;
     @Getter
     @Setter
     private List<User> friends;
+
+    public void addAccounts(String account){
+        accounts.add(account);
+    }
 }

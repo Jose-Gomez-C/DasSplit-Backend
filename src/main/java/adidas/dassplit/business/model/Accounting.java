@@ -11,12 +11,16 @@ import java.io.Serializable;
 @Document(collection = "contributions")
 @NoArgsConstructor
 @AllArgsConstructor
-public class Contribution implements Serializable {
+public class Accounting implements Serializable {
     @Getter
     @Setter
-    private User user;
+    private String user;
     @Getter
     @Setter
-    private Long amount;
+    private long debit;
+    @Getter
+    @Setter
+    private long balance;
+
 
 }

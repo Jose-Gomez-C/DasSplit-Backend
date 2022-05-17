@@ -1,9 +1,7 @@
 package adidas.dassplit.web.requests;
 
 import adidas.dassplit.business.model.Account;
-import adidas.dassplit.business.model.Contribution;
-import adidas.dassplit.business.model.User;
-import lombok.AllArgsConstructor;
+import adidas.dassplit.business.model.Accounting;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -26,15 +24,18 @@ public class AccountRequest {
     private long currentDebt;
     @Getter
     @Setter
-    private List<Contribution> contributions;
+    private List<String> participants;
+    @Getter
+    @Setter
+    private List<Accounting> statement;
     @Getter
     @Setter
     private Boolean isFavorite;
     @Getter
     @Setter
-    private List<User> participants;
+    private List<Accounting> contributions;
 
-    public Account toAccount(AccountRequest accountRequest ){
-        return new Account(name, totalDebt, currentDebt, contributions, isFavorite, participants);
+    public Account toAccount(AccountRequest accountRequest) {
+        return new Account(name, totalDebt, currentDebt, participants, contributions, statement, isFavorite);
     }
 }

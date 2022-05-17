@@ -1,6 +1,5 @@
 package adidas.dassplit.business.model;
 
-import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -29,23 +28,29 @@ public class Account implements Serializable {
     private long currentDebt;
     @Getter
     @Setter
-    private List<Contribution> contributions;
+    private List<String> participants;
+    @Getter
+    @Setter
+    private List<Accounting> accountings;
+    @Getter
+    @Setter
+    private List<Accounting> statement;
     @Getter
     @Setter
     private Boolean isFavorite;
-    @Getter
-    @Setter
-    private List<User> participants;
 
-    public Account(String name, long totalDebt, long currentDebt, List<Contribution> contributions, Boolean isFavorite, List<User> participants) {
+
+    public Account(String name, long totalDebt, long currentDebt, List<String> participants, List<Accounting> accountings, List<Accounting> statement, Boolean isFavorite) {
         this.name = name;
         this.totalDebt = totalDebt;
         this.currentDebt = currentDebt;
-        this.contributions = contributions;
-        this.isFavorite = isFavorite;
         this.participants = participants;
+        this.accountings = accountings;
+        this.isFavorite = isFavorite;
+        this.statement = statement;
     }
-    public void addContribution(Contribution contribution){
-        contributions.add(contribution);
+    public void addContribution(Accounting contribution){
+        accountings.add(contribution);
     }
+
 }

@@ -24,7 +24,7 @@ public class UserRequest {
     private String email;
     @Getter
     @Setter
-    private List<Account> accounts;
+    private List<String> accounts;
     @Getter
     @Setter
     private List<User> friends;
@@ -37,7 +37,7 @@ public class UserRequest {
     }
 
     public User toUser() {
-        return new User(name, email, accounts, friends);
+        return new User(name, email.toLowerCase() , accounts, friends);
     }
 
 
