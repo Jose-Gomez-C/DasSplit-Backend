@@ -23,8 +23,12 @@ public class AccountingRequest {
     @Setter
     @Getter
     private long balance;
+    @Getter
+    @Setter
+    private String name;
+
 
     public Accounting toAccounting(){
-        return new Accounting(user, debit, balance);
+        return new Accounting(user, debit, balance, name);
     }
 }

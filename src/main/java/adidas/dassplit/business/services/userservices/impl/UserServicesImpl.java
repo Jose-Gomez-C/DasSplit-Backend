@@ -64,7 +64,7 @@ public class UserServicesImpl implements UserServices {
                 accounting.setDebit(accounting.getDebit()+ i.getDebit());
                 accounting.setBalance(accounting.getBalance()+i.getDebit());
             }else{
-                accounted.put(i.getUser(), new Accounting(i.getUser(), i.getDebit(), (account.getCurrentDebt()*-1)+i.getDebit()));
+                accounted.put(i.getUser(), new Accounting(i.getUser(), i.getDebit(), (account.getCurrentDebt()*-1)+i.getDebit(), i.getName()));
             }
         }
         for(String i : account.getParticipants()){
@@ -117,8 +117,8 @@ public class UserServicesImpl implements UserServices {
         long totalDeb = 0;
         for (String i : accounts){
             Account account = accountRepository.findById(i).orElseThrow(() -> new AccountServiceException(AccountServiceException.ACCOUNT_NOT_FOUND));
-            List<Accounting> accountings = account.getAccountings();
-            for (Accounting y : accountings){
+            List<Accounting> statement = account.getStatement();
+            for (Accounting y : statement){
                 if (user.getEmail().equals(y.getUser())){
                     totalDeb += y.getBalance();
                 }
@@ -153,6 +153,7 @@ public class UserServicesImpl implements UserServices {
     }
     @Override
     public Account findAccountById(String idAccount) throws AccountServiceException{
+
         return accountRepository.findById(idAccount).orElseThrow(() -> new AccountServiceException(AccountServiceException.ACCOUNT_NOT_FOUND));
     }
 }

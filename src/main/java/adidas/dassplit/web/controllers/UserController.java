@@ -63,6 +63,31 @@ public class UserController {
     public ResponseEntity<Object> getUserExists(@PathVariable String idUser) {
         return  new ResponseEntity<>( userServices.getUserExists(idUser), HttpStatus.OK);
     }
+    @GetMapping("{idUser}/debtStatus")
+    public ResponseEntity<Object> getAllCurretDebt(@PathVariable String idUser){
+        ResponseEntity<Object> responseEntity;
+        try {
+            responseEntity = new ResponseEntity<>(userServices.getAllCurretDebt(idUser), HttpStatus.OK);
+        } catch (UserServiceException | AccountServiceException e) {
+            Map<String, String> error = new HashMap<>();
+            error.put(key, e.getMessage());
+            responseEntity = new ResponseEntity<>(error, HttpStatus.CONFLICT);
+        }
+        return responseEntity;
+    }
+    @GetMapping("/account/{idAccount}")
+    public ResponseEntity<Object> getAccount(@PathVariable String idAccount) {
+        System.out.println("hola");
+        ResponseEntity<Object> responseEntity;
+        try {
+            responseEntity = new ResponseEntity<>(userServices.findAccountById(idAccount), HttpStatus.OK);
+        } catch (AccountServiceException e) {
+            Map<String, String> error = new HashMap<>();
+            error.put(key, e.getMessage());
+            responseEntity = new ResponseEntity<>(error, HttpStatus.CONFLICT);
+        }
+        return responseEntity;
+    }
 
     @PostMapping()
     public ResponseEntity<Object> createUser(@Valid @RequestBody UserRequest userRequest, BindingResult result) {

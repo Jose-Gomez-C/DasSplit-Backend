@@ -40,5 +40,4 @@ public class UserRequest {
         return new User(name, email.toLowerCase() , accounts, friends);
     }
 
-
 }

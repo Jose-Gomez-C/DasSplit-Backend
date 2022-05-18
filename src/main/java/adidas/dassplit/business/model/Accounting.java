@@ -21,6 +21,15 @@ public class Accounting implements Serializable {
     @Getter
     @Setter
     private long balance;
+    @Getter
+    @Setter
+    private String name;
 
 
+    public Accounting(String user, int debit, long balance) {
+        this.user = user;
+        this.debit = debit;
+        this.balance = balance;
+        this.name = "N/A";
+    }
 }
