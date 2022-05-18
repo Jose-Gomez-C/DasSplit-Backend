@@ -39,13 +39,13 @@ public class UserServicesImpl implements UserServices {
 
     @Override
     public Account createAccount(User user, Account account) throws UserServiceException {
-        account.setCurrentDebt(account.getTotalDebt()/ account.getParticipants().size());
+        account.setCurrentDebt(account.getTotalDebt() / account.getParticipants().size());
         modifyStatement(account);
         accountRepository.save(account);
         user.addAccounts(account.getId());
-        List<String> participants =  account.getParticipants();
-        for (String i : participants){
-            if (!(user.getEmail().equals(i))){
+        List<String> participants = account.getParticipants();
+        for (String i : participants) {
+            if (!(user.getEmail().equals(i))) {
                 User participant = userRepository.findByEmail(i).orElseThrow(() -> new UserServiceException(UserServiceException.USER_NOT_FOUND_EXCEPTION));
                 participant.addAccounts(account.getId());
                 userRepository.save(participant);
@@ -54,22 +54,23 @@ public class UserServicesImpl implements UserServices {
         userRepository.save(user);
         return account;
     }
-    private void modifyStatement(Account account){
-        Map<String,Accounting> accounted = new HashMap<>();
+
+    private void modifyStatement(Account account) {
+        Map<String, Accounting> accounted = new HashMap<>();
         List<Accounting> statement = new ArrayList<>();
-        for(Accounting i : account.getAccountings()){
-            if(accounted.containsKey(i.getUser())){
+        for (Accounting i : account.getAccountings()) {
+            if (accounted.containsKey(i.getUser())) {
 
                 Accounting accounting = accounted.get(i.getUser());
-                accounting.setDebit(accounting.getDebit()+ i.getDebit());
-                accounting.setBalance(accounting.getBalance()+i.getDebit());
-            }else{
-                accounted.put(i.getUser(), new Accounting(i.getUser(), i.getDebit(), (account.getCurrentDebt()*-1)+i.getDebit(), i.getName()));
+                accounting.setDebit(accounting.getDebit() + i.getDebit());
+                accounting.setBalance(accounting.getBalance() + i.getDebit());
+            } else {
+                accounted.put(i.getUser(), new Accounting(i.getUser(), i.getDebit(), (account.getCurrentDebt() * -1) + i.getDebit(), i.getName()));
             }
         }
-        for(String i : account.getParticipants()){
-            if(!(accounted.containsKey(i))){
-                accounted.put(i, new Accounting(i,0,account.getCurrentDebt()*-1));
+        for (String i : account.getParticipants()) {
+            if (!(accounted.containsKey(i))) {
+                accounted.put(i, new Accounting(i, 0, account.getCurrentDebt() * -1));
             }
         }
         for (Map.Entry<String, Accounting> entry : accounted.entrySet()) {
@@ -102,41 +103,44 @@ public class UserServicesImpl implements UserServices {
         if (account.getCurrentDebt() < 0) {
             throw new AccountServiceException(AccountServiceException.DEBET_CANNOT_NEGATIVE);
         } else if (contribution.getBalance() > 0) {
-            account.setTotalDebt(account.getTotalDebt()+ contribution.getBalance());
-            account.setCurrentDebt(account.getCurrentDebt()+ contribution.getBalance());
+            account.setTotalDebt(account.getTotalDebt() + contribution.getBalance());
+            account.setCurrentDebt(account.getCurrentDebt() + contribution.getBalance());
         } else {
             account.addContribution(contribution);
             accountRepository.save(account);
         }
         return account;
     }
+
     @Override
     public long getAllCurretDebt(String idUser) throws UserServiceException, AccountServiceException {
         User user = userRepository.findByEmail(idUser).orElseThrow(() -> new UserServiceException(UserServiceException.USER_NOT_FOUND_EXCEPTION));
         List<String> accounts = user.getAccounts();
         long totalDeb = 0;
-        for (String i : accounts){
+        for (String i : accounts) {
             Account account = accountRepository.findById(i).orElseThrow(() -> new AccountServiceException(AccountServiceException.ACCOUNT_NOT_FOUND));
             List<Accounting> statement = account.getStatement();
-            for (Accounting y : statement){
-                if (user.getEmail().equals(y.getUser())){
+            for (Accounting y : statement) {
+                if (user.getEmail().equals(y.getUser())) {
                     totalDeb += y.getBalance();
                 }
             }
         }
         return totalDeb;
     }
+
     @Override
     public List<Account> getAllAccountByIdUser(String idUser) throws UserServiceException, AccountServiceException {
         User user = userRepository.findByEmail(idUser).orElseThrow(() -> new UserServiceException(UserServiceException.USER_NOT_FOUND_EXCEPTION));
         List<Account> accounts = new ArrayList<>();
-        for (String account : user.getAccounts()){
+        for (String account : user.getAccounts()) {
             accounts.add(accountRepository.findById(account).orElseThrow(() -> new AccountServiceException(AccountServiceException.ACCOUNT_NOT_FOUND)));
         }
         return accounts;
     }
+
     @Override
-    public boolean getUserExists(String idUser){
+    public boolean getUserExists(String idUser) {
         boolean userExists;
         try {
             findUserByEmail(idUser);
@@ -151,8 +155,9 @@ public class UserServicesImpl implements UserServices {
     public User findUserByEmail(String email) throws UserServiceException {
         return userRepository.findByEmail(email).orElseThrow(() -> new UserServiceException(UserServiceException.USER_NOT_FOUND_EXCEPTION));
     }
+
     @Override
-    public Account findAccountById(String idAccount) throws AccountServiceException{
+    public Account findAccountById(String idAccount) throws AccountServiceException {
 
         return accountRepository.findById(idAccount).orElseThrow(() -> new AccountServiceException(AccountServiceException.ACCOUNT_NOT_FOUND));
     }

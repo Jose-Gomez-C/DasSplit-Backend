@@ -49,7 +49,8 @@ public class Account implements Serializable {
         this.isFavorite = isFavorite;
         this.statement = statement;
     }
-    public void addContribution(Accounting contribution){
+
+    public void addContribution(Accounting contribution) {
         accountings.add(contribution);
     }
 

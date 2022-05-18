@@ -1,7 +1,5 @@
 package adidas.dassplit.business.exception;
 
-import java.util.function.Supplier;
-
 public class UserServiceException  extends Exception {
 
     private static final long serialVersionUID = 1L;

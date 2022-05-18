@@ -28,7 +28,7 @@ public class AccountingRequest {
     private String name;
 
 
-    public Accounting toAccounting(){
+    public Accounting toAccounting() {
         return new Accounting(user, debit, balance, name);
     }
 }

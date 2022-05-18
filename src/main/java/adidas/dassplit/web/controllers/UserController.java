@@ -8,7 +8,6 @@ import adidas.dassplit.business.services.userservices.UserServices;
 import adidas.dassplit.web.handlers.ErrorHandler;
 import adidas.dassplit.web.requests.AccountingRequest;
 import adidas.dassplit.web.requests.UserRequest;
-import org.apache.tomcat.util.http.parser.HttpParser;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -59,12 +58,14 @@ public class UserController {
         }
         return responseEntity;
     }
+
     @GetMapping("{idUser}/exists")
     public ResponseEntity<Object> getUserExists(@PathVariable String idUser) {
-        return  new ResponseEntity<>( userServices.getUserExists(idUser), HttpStatus.OK);
+        return new ResponseEntity<>(userServices.getUserExists(idUser), HttpStatus.OK);
     }
+
     @GetMapping("{idUser}/debtStatus")
-    public ResponseEntity<Object> getAllCurretDebt(@PathVariable String idUser){
+    public ResponseEntity<Object> getAllCurretDebt(@PathVariable String idUser) {
         ResponseEntity<Object> responseEntity;
         try {
             responseEntity = new ResponseEntity<>(userServices.getAllCurretDebt(idUser), HttpStatus.OK);
@@ -75,6 +76,7 @@ public class UserController {
         }
         return responseEntity;
     }
+
     @GetMapping("/account/{idAccount}")
     public ResponseEntity<Object> getAccount(@PathVariable String idAccount) {
         System.out.println("hola");

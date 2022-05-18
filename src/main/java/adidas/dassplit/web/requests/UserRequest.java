@@ -1,7 +1,6 @@
 package adidas.dassplit.web.requests;
 
 
-import adidas.dassplit.business.model.Account;
 import adidas.dassplit.business.model.User;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -9,7 +8,6 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import javax.validation.constraints.Email;
-import java.util.ArrayList;
 import java.util.List;
 
 @AllArgsConstructor
@@ -37,7 +35,7 @@ public class UserRequest {
     }
 
     public User toUser() {
-        return new User(name, email.toLowerCase() , accounts, friends);
+        return new User(name, email.toLowerCase(), accounts, friends);
     }
 
 }
