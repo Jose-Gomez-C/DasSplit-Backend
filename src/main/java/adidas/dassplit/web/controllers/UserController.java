@@ -79,7 +79,6 @@ public class UserController {
 
     @GetMapping("/account/{idAccount}")
     public ResponseEntity<Object> getAccount(@PathVariable String idAccount) {
-        System.out.println("hola");
         ResponseEntity<Object> responseEntity;
         try {
             responseEntity = new ResponseEntity<>(userServices.findAccountById(idAccount), HttpStatus.OK);
