@@ -18,7 +18,7 @@ Los endpoints probados fueron:
 
 ## Tecnologias, herramientas y librerias
 
-- [Spring Boot](https://spring.io/projects/spring-boot) herramienta que nos permite crear un proyecto como con Spring Framework, solo que Spring Boot elimina ciertas configuraciones repetitivas requeridas para desplegar la aplicación o proyecto.
+- [Spring Boot](https://spring.io/projects/spring-boot) herramienta que nos permite crear un proyecto web, solo que Spring Boot elimina ciertas configuraciones repetitivas requeridas para desplegar la aplicación o proyecto.
 - [Lombok](https://projectlombok.org) Libreria que ayuda a una mejor lectura del codigo
 - [javax validation](https://docs.oracle.com/javaee/7/api/javax/validation/constraints/package-summary.html) Libreria que nos ayuda a validar datos.
 
