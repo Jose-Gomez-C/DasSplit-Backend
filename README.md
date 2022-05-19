@@ -26,7 +26,7 @@ Los endpoints provados fueron:
 
 - [IntelliJ](https://www.jetbrains.com/es-es/idea/) Editor de JAVA donde se puede compilar el proyecto.
 - [Gradle](https://gradle.org) Administrador de dependencias.
-- [Postman](https://www.postman.com)
+- [Postman](https://www.postman.com) Aplicacion de pruebas API.
 
 ## Autor
 [José Luis Gómez Camacho](https://github.com/Jose-Gomez-C)
