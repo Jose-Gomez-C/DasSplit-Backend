@@ -7,7 +7,7 @@ Este proyecto es una prueba técnica para Adidas, se trata de una app similar a 
 - [Gradle](https://gradle.org)
 
 ## Diagrama de clases
-
+  ![](https://github.com/Jose-Gomez-C/DasSplit-Backend/blob/main/img/Class%20Diagram.png)
 ## Pruebas
 
 Se realizaron pruebas por [Postman](https://www.postman.com) a los endpoint que son usados por la [DasSplit Frontend](https://github.com/Jose-Gomez-C/DasSplit-Frontend#readme), si se desean correr solo debe importar este [archivo](https://github.com/Jose-Gomez-C/DasSplit-Backend/blob/main/Test%20Postam/DasSplit.postman_collection.json) en Postman
