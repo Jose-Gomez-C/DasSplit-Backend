@@ -19,14 +19,14 @@ Los endpoints probados fueron:
 ## Tecnologias, herramientas y librerias
 
 - [Spring Boot](https://spring.io/projects/spring-boot) herramienta que nos permite crear un proyecto web, solo que Spring Boot elimina ciertas configuraciones repetitivas requeridas para desplegar la aplicación o proyecto.
-- [Lombok](https://projectlombok.org) Libreria que ayuda a una mejor lectura del codigo
-- [javax validation](https://docs.oracle.com/javaee/7/api/javax/validation/constraints/package-summary.html) Libreria que nos ayuda a validar datos.
+- [Lombok](https://projectlombok.org) Librería que ayuda a una mejor lectura del código
+- [javax validation](https://docs.oracle.com/javaee/7/api/javax/validation/constraints/package-summary.html) Librería que nos ayuda a validar datos.
 
 ## Construido
 
 - [IntelliJ](https://www.jetbrains.com/es-es/idea/) Editor de JAVA donde se puede compilar el proyecto.
 - [Gradle](https://gradle.org) Administrador de dependencias.
-- [Postman](https://www.postman.com) Aplicacion de pruebas API.
+- [Postman](https://www.postman.com) Aplicación de pruebas API.
 
 ## Autor
 [José Luis Gómez Camacho](https://github.com/Jose-Gomez-C)
