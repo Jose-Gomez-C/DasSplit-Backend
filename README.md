@@ -16,7 +16,7 @@ Los endpoints probados fueron:
 
 ![](https://github.com/Jose-Gomez-C/DasSplit-Backend/blob/main/Test%20Postam/Tests.png)
 
-## Tecnologias, herramientas y librerias
+## Tecnologías, herramientas y librerias
 
 - [Spring Boot](https://spring.io/projects/spring-boot) herramienta que nos permite crear un proyecto web, solo que Spring Boot elimina ciertas configuraciones repetitivas requeridas para desplegar la aplicación o proyecto.
 - [Lombok](https://projectlombok.org) Librería que ayuda a una mejor lectura del código
