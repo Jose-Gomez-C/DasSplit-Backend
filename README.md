@@ -2,6 +2,8 @@
 
 Este proyecto es una prueba técnica para Adidas, se trata de una app similar a la conocida [Splitwise](https://www.splitwise.com).
 
+[Para ver la app](http://34.228.78.173:3000), puede ingresar con el usuario test@adidas.com con contraseña 123456
+
 ## Prerrequisitos
 - [Java 11](https://www.java.com/es/download/help/whatis_java.html)
 - [Gradle](https://gradle.org)
